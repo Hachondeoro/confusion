@@ -80,13 +80,13 @@ class CommentForm extends Component {
                             <Row className='form-group'>
                                 <Label htmlFor='rating' md={2}>Rating</Label>
                                 <Col md={12}>
-                                    <Control.checkbox model=".rating" name="rating" className="form-control">
+                                    <Control.select model=".rating" name="rating" className="form-control">
                                         <option>1</option>
                                         <option>2</option>
                                         <option>3</option>
                                         <option>4</option>
                                         <option>5</option>
-                                    </Control.checkbox>
+                                    </Control.select>
                                 </Col>
                             </Row>
                             <Row className='form-group'>
