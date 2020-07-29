@@ -6,21 +6,28 @@ import {
 
 import { Link } from 'react-router-dom';
 import { Control, LocalForm, Errors } from 'react-redux-form';
-
+import { Loading } from './LoadingComponent';
+import { baseUrl } from '../shared/baseUrl';
+import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 
 
 function RenderDish({ dish }) {
     if (dish != null) {
         return (
             <div className='col-md-5 m-1'>
-                <Card>
-                    <CardImg width='100%' src={dish.image} alt={dish.name} />
-                    <CardBody>
-                        <CardTitle><p className='font-weight-bold text-uppercase'>
-                            {dish.category}</p> {dish.name}</CardTitle>
-                        <CardText>{dish.description}</CardText>
-                    </CardBody>
-                </Card>
+                <FadeTransform in
+                    transformProps={{
+                        exitTransform: 'scale(0.5) translateY(-50%)'
+                    }}>
+                    <Card>
+                        <CardImg width='100%' src={baseUrl + dish.image} alt={dish.name} />
+                        <CardBody>
+                            <CardTitle><p className='font-weight-bold text-uppercase'>
+                                {dish.category}</p> {dish.name}</CardTitle>
+                            <CardText>{dish.description}</CardText>
+                        </CardBody>
+                    </Card>
+                </FadeTransform>
             </div>
         )
     }
@@ -48,8 +55,9 @@ class CommentForm extends Component {
     }
 
     handleSubmit(values) {
-        this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
+        this.props.postComment(this.props.dishId, values.rating, values.author, values.comment);
     }
+
 
     toggleDropdown() {
         this.setState({
@@ -130,19 +138,21 @@ class CommentForm extends Component {
     }
 }
 
-function RenderComments({ dish, addComment, dishId }) {
+function RenderComments({ dish, postComment, dishId }) {
     if (dish != null) {
         const comments = dish.map(comment => {
             return (
-                <li key={comment.id}>
-                    <p>{comment.comment}</p>
-                    <p>--{comment.author}, {new Intl.DateTimeFormat('en-US', {
-                        weekday: 'short',
-                        year: 'numeric',
-                        month: 'long',
-                        day: '2-digit'
-                    }).format(new Date(comment.date))}</p>
-                </li>
+                <Fade in>
+                    <li key={comment.id}>
+                        <p>{comment.comment}</p>
+                        <p>--{comment.author}, {new Intl.DateTimeFormat('en-US', {
+                            weekday: 'short',
+                            year: 'numeric',
+                            month: 'long',
+                            day: '2-digit'
+                        }).format(new Date(comment.date))}</p>
+                    </li>
+                </Fade>
             );
         })
 
@@ -150,9 +160,11 @@ function RenderComments({ dish, addComment, dishId }) {
             <div className='col-12 col-md-5 m-1'>
                 <h2>Comments</h2>
                 <ul className='list-unstyled'>
-                    {comments}
+                    <Stagger in>
+                        {comments}
+                    </Stagger>
                 </ul>
-                <CommentForm dishId={dishId} addComment={addComment} />
+                <CommentForm dishId={dishId} postComment={postComment} />
             </div>
         )
     } else return (<div></div>)
@@ -161,28 +173,48 @@ function RenderComments({ dish, addComment, dishId }) {
 
 const DishDetail = (props) => {
     console.log('DishDetail Component render invoked');
-    return (
-        <div className='container'>
-            <div className='row'>
-                <Breadcrumb>
-                    <BreadcrumbItem><Link to='/menu'>Menu</Link></BreadcrumbItem>
-                    <BreadcrumbItem active>{props.dish.name}</BreadcrumbItem>
-                </Breadcrumb>
-                <div className='col-12'>
-                    <h3>{props.dish.name}</h3>
-                    <hr />
+    if (props.isLoading) {
+        return (
+            <div className='container'>
+                <div className='row'>
+                    <Loading />
                 </div>
             </div>
-
-            <div className='row'>
-                <RenderDish dish={props.dish} />
-                <RenderComments dish={props.comments}
-                    addComment={props.addComment}
-                    dishId={props.dish.id} />
-
+        )
+    }
+    else if (props.errMess) {
+        return (
+            <div className='container'>
+                <div className='row'>
+                    <h4>{props.errMess}</h4>
+                </div>
             </div>
-        </div>
-    );
+        )
+    }
+    else if (props.dish != null) {
+        return (
+            <div className='container'>
+                <div className='row'>
+                    <Breadcrumb>
+                        <BreadcrumbItem><Link to='/menu'>Menu</Link></BreadcrumbItem>
+                        <BreadcrumbItem active>{props.dish.name}</BreadcrumbItem>
+                    </Breadcrumb>
+                    <div className='col-12'>
+                        <h3>{props.dish.name}</h3>
+                        <hr />
+                    </div>
+                </div>
+
+                <div className='row'>
+                    <RenderDish dish={props.dish} />
+                    <RenderComments dish={props.comments}
+                        postComment={props.postComment}
+                        dishId={props.dish.id} />
+
+                </div>
+            </div>
+        );
+    }
 }
 
 
