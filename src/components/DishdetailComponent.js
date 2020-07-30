@@ -7,7 +7,6 @@ import {
 import { Link } from 'react-router-dom';
 import { Control, LocalForm, Errors } from 'react-redux-form';
 import { Loading } from './LoadingComponent';
-import { baseUrl } from '../shared/baseUrl';
 import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 
 
@@ -20,7 +19,7 @@ function RenderDish({ dish }) {
                         exitTransform: 'scale(0.5) translateY(-50%)'
                     }}>
                     <Card>
-                        <CardImg width='100%' src={baseUrl + dish.image} alt={dish.name} />
+                        <CardImg width='100%' src={dish.image} alt={dish.name} />
                         <CardBody>
                             <CardTitle><p className='font-weight-bold text-uppercase'>
                                 {dish.category}</p> {dish.name}</CardTitle>

@@ -10,10 +10,10 @@ import Home from './HomeComponent';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 // Pull in the function for the action.
-import { postComment, fetchDishes, fetchComments, fetchPromos } from '../redux/ActionCreators';
-import { actions } from 'react-redux-form';
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
+// A comment
 import App from './Animated';
+import { addComment } from '../redux/ActionCreators';
+
 
 
 // How to transform the current Redux store state into the props you want to pass to a 
@@ -26,35 +26,25 @@ const mapStateToProps = (state) => {
         leaders: state.leaders
     }
 }
+
 // You can create a bound action creator that automatically dispatches:
 // And then you'll be able to call them directly: boundAddTodo(text)
 // This connects the action, to dispatch the action.
 const mapDispatchToProps = (dispatch) => ({
-    postComment: (dishId, rating, author, comment) => dispatch(postComment(dishId, rating, author, comment)),
-    fetchDishes: () => { dispatch(fetchDishes()) },
-    resetFeedbackForm: () => { dispatch(actions.reset('feedback')) },
-    fetchComments: () => { dispatch(fetchComments()) },
-    fetchPromos: () => { dispatch(fetchPromos()) }
+    addComment: (dishId, rating, author, comment) => dispatch(addComment(dishId, rating, author, comment))
 })
 
-class Main extends Component {
 
-    componentDidMount() {
-        this.props.fetchDishes();
-        this.props.fetchComments();
-        this.props.fetchPromos();
-    }
+
+class Main extends Component {
 
     render() {
         const HomePage = () => {
             return (
                 <div>
-                    <Home dish={this.props.dishes.dishes.filter((dish) => dish.featured)[0]}
-                        dishesLoading={this.props.dishes.isLoading}
-                        dishesErrMess={this.props.dishes.errMess}
-                        promotion={this.props.promotions.promotions.filter((promo) => promo.featured)[0]}
-                        promosLoading={this.props.promotions.isLoading}
-                        promosErrMess={this.props.promotions.errMess}
+                    <Home
+                        dish={this.props.dishes.filter((dish) => dish.featured)[0]}
+                        promotion={this.props.promotions.filter((promo) => promo.featured)[0]}
                         leader={this.props.leaders.filter((leader) => leader.featured)[0]}
                     />
                     <App />
@@ -65,15 +55,13 @@ class Main extends Component {
 
         const DishWithId = ({ match }) => {
             return (
-                <DishDetail dish={this.props.dishes.dishes.filter((dish) => dish.id === parseInt(match.params.dishId, 10))[0]}
-                    isLoading={this.props.dishes.isLoading}
-                    ErrMess={this.props.dishes.errMess}
-                    comments={this.props.comments.comments.filter((comment) => comment.dishId === parseInt(match.params.dishId, 10))}
-                    commentsErrMess={this.props.comments.errMess}
-                    postComment={this.props.postComment}
+                <DishDetail dish={this.props.dishes.filter((dish) => dish.id === parseInt(match.params.dishId, 10))[0]}
+                    comments={this.props.comments.filter((comment) => comment.dishId === parseInt(match.params.dishId, 10))}
+                    addComment={this.props.addComment}
                 />
             )
         }
+
 
         const Person = ({ person }) => {
             return (
@@ -85,18 +73,14 @@ class Main extends Component {
         return (
             <div>
                 <Header />
-                <TransitionGroup>
-                    <CSSTransition key={this.props.location.key} classNames='page' timeout={300}>
-                        <Switch>
-                            <Route path="/home" component={HomePage} />
-                            <Route exact path="/menu" component={() => <Menu dishes={this.props.dishes} />} />
-                            <Route path='/menu/:dishId' component={DishWithId} />
-                            <Route exact path='/aboutus' component={Person} />
-                            <Route exact path='/contactus' component={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm} />} />
-                            <Redirect to="/home" />
-                        </Switch>
-                    </CSSTransition>
-                </TransitionGroup>
+                <Switch>
+                    <Route path="/confusion" component={HomePage} />
+                    <Route exact path="/menu" component={() => <Menu dishes={this.props.dishes} />} />
+                    <Route path='/menu/:dishId' component={DishWithId} />
+                    <Route exact path='/aboutus' component={Person} />
+                    <Route exact path='/contactus' component={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm} />} />
+                    <Redirect to="/confusion" />
+                </Switch>
                 <Footer />
             </div>
         );
@@ -106,3 +90,9 @@ class Main extends Component {
 // This is the container
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));
 
+// OK: The store is available universally (through configureStore). the dishes file is being pulled from src/redux/dishes.js 
+// There is an error because this Dishes object being imported from dishes.js is in the form of a reduucer
+// dishes = reducer function, doesn't have the filter properties.    leaders is a regular object, it can have
+// the filter properties, therefore, the functions in MainComponent.js work properly.
+
+// Fix the MENU/Comments section using the logic stated above
