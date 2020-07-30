@@ -12,7 +12,8 @@ import { connect } from 'react-redux';
 // Pull in the function for the action.
 // A comment
 import App from './Animated';
-import { addComment } from '../redux/ActionCreators';
+import { actions } from 'react-redux-form';
+import { addComment, fetchDishes } from '../redux/ActionCreators';
 
 
 
@@ -30,37 +31,48 @@ const mapStateToProps = (state) => {
 // You can create a bound action creator that automatically dispatches:
 // And then you'll be able to call them directly: boundAddTodo(text)
 // This connects the action, to dispatch the action.
-const mapDispatchToProps = (dispatch) => ({
-    addComment: (dishId, rating, author, comment) => dispatch(addComment(dishId, rating, author, comment))
-})
+const mapDispatchToProps = dispatch => ({
+    addComment: (dishId, rating, author, comment) => dispatch(addComment(dishId, rating, author, comment)),
+    fetchDishes: () => { dispatch(fetchDishes()) },
+    resetFeedbackForm: () => { dispatch(actions.reset('feedback')) }
+});
 
 
 
 class Main extends Component {
 
+    constructor(props) {
+        super(props);
+    }
+
+    componentDidMount() {
+        this.props.fetchDishes();
+    }
+
     render() {
         const HomePage = () => {
             return (
-                <div>
-                    <Home
-                        dish={this.props.dishes.filter((dish) => dish.featured)[0]}
-                        promotion={this.props.promotions.filter((promo) => promo.featured)[0]}
-                        leader={this.props.leaders.filter((leader) => leader.featured)[0]}
-                    />
-                    <App />
-                </div>
-            )
-
-        };
+                <Home
+                    dish={this.props.dishes.dishes.filter((dish) => dish.featured)[0]}
+                    dishesLoading={this.props.dishes.isLoading}
+                    dishesErrMess={this.props.dishes.errMess}
+                    promotion={this.props.promotions.filter((promo) => promo.featured)[0]}
+                    leader={this.props.leaders.filter((leader) => leader.featured)[0]}
+                />
+            );
+        }
 
         const DishWithId = ({ match }) => {
             return (
-                <DishDetail dish={this.props.dishes.filter((dish) => dish.id === parseInt(match.params.dishId, 10))[0]}
+                <DishDetail dish={this.props.dishes.dishes.filter((dish) => dish.id === parseInt(match.params.dishId, 10))[0]}
+                    isLoading={this.props.dishes.isLoading}
+                    errMess={this.props.dishes.errMess}
                     comments={this.props.comments.filter((comment) => comment.dishId === parseInt(match.params.dishId, 10))}
                     addComment={this.props.addComment}
                 />
-            )
-        }
+            );
+        };
+
 
 
         const Person = ({ person }) => {
@@ -74,12 +86,12 @@ class Main extends Component {
             <div>
                 <Header />
                 <Switch>
-                    <Route path="/confusion" component={HomePage} />
+                    <Route path="/home" component={HomePage} />
                     <Route exact path="/menu" component={() => <Menu dishes={this.props.dishes} />} />
                     <Route path='/menu/:dishId' component={DishWithId} />
                     <Route exact path='/aboutus' component={Person} />
                     <Route exact path='/contactus' component={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm} />} />
-                    <Redirect to="/confusion" />
+                    <Redirect to="/home" />
                 </Switch>
                 <Footer />
             </div>
@@ -89,8 +101,7 @@ class Main extends Component {
 
 // This is the container
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));
-
-// OK: The store is available universally (through configureStore). the dishes file is being pulled from src/redux/dishes.js 
+// OK: The store is available universally (through configureStore). the dishes file is being pulled from src/redux/dishes.js
 // There is an error because this Dishes object being imported from dishes.js is in the form of a reduucer
 // dishes = reducer function, doesn't have the filter properties.    leaders is a regular object, it can have
 // the filter properties, therefore, the functions in MainComponent.js work properly.

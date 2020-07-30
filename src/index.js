@@ -10,7 +10,7 @@ import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
   <React.StrictMode>
-    <img src={require("./maxresdefault.jpg")} alt="Girl in a jacket" width="500" height="600"></img>
+    {/* <img src={require("./maxresdefault.jpg")} alt="Girl in a jacket" width="500" height="600"></img> */}
     <App />
   </React.StrictMode>,
   document.getElementById("root")
