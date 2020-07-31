@@ -18,7 +18,9 @@ function RenderCard({ item, isLoading, errMess }) {
     else
         return (
             <Card>
-                <CardImg src={item.image} alt={item.name} />
+                <CardImg src={require(`.${item.image}`)} alt={`.asdfsf${item.image}`} />
+                {/* <img src={require(`.${item.image}`)}></img>
+                <img src={require('./assets/images/buffet.png')}></img> */}
                 <CardBody>
                     <CardTitle>{item.name}</CardTitle>
                     {item.designation ? <CardSubtitle>{item.designation}</CardSubtitle> : null}
@@ -28,6 +30,7 @@ function RenderCard({ item, isLoading, errMess }) {
         );
 
 }
+
 
 function Home(props) {
     return (

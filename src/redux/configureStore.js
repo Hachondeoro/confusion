@@ -1,5 +1,5 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
-import { Reducer, initialState } from './reducer'
+// import { Reducer, initialState } from './reducer'
 import { createForms } from 'react-redux-form';
 import { InitialFeedback } from './forms';
 import { Dishes } from './dishes';
