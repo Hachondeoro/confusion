@@ -1,43 +1,47 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "be3f848529aac85361ccbbe942f371ca",
+    "revision": "70b38b58516bf5477fa01a663282bed6",
     "url": "/confusion/index.html"
   },
   {
-    "revision": "dc935db9bce95a99b0c1",
+    "revision": "55f3f836c770bcaee4f5",
     "url": "/confusion/static/css/2.fd308fc8.chunk.css"
   },
   {
-    "revision": "4b87c4d9f6b2a212b58f",
-    "url": "/confusion/static/css/main.3039ffa8.chunk.css"
+    "revision": "2c2ae74125ccd98cb56f",
+    "url": "/confusion/static/css/main.f1f50700.chunk.css"
   },
   {
-    "revision": "dc935db9bce95a99b0c1",
-    "url": "/confusion/static/js/2.91c47719.chunk.js"
+    "revision": "55f3f836c770bcaee4f5",
+    "url": "/confusion/static/js/2.133bd977.chunk.js"
   },
   {
     "revision": "3453b8997016469371284a28c0e873e2",
-    "url": "/confusion/static/js/2.91c47719.chunk.js.LICENSE.txt"
+    "url": "/confusion/static/js/2.133bd977.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "4b87c4d9f6b2a212b58f",
-    "url": "/confusion/static/js/main.19763b45.chunk.js"
+    "revision": "2c2ae74125ccd98cb56f",
+    "url": "/confusion/static/js/main.a95d7e05.chunk.js"
   },
   {
     "revision": "93e338425105545936e2",
     "url": "/confusion/static/js/runtime-main.dfde7455.js"
   },
   {
+    "revision": "418b5801a3b904f98e3bd4afa893ac79",
+    "url": "/confusion/static/media/adobo-aqp.418b5801.jpg"
+  },
+  {
     "revision": "681a3525e486a4800641b627e53efd34",
     "url": "/confusion/static/media/alberto.681a3525.png"
   },
   {
-    "revision": "ea8ecac0b30883a7bdeb0f57ed02dcdd",
-    "url": "/confusion/static/media/alberto2.ea8ecac0.png"
-  },
-  {
     "revision": "96d6bd20976fae9cf5fdaccec2948966",
     "url": "/confusion/static/media/buffet.96d6bd20.png"
+  },
+  {
+    "revision": "0ed90a8ed6c34a58246b63f87e744a88",
+    "url": "/confusion/static/media/ceviche.0ed90a8e.jpg"
   },
   {
     "revision": "a1c19f6daa4c7956e354aac00bd92ed4",
@@ -64,16 +68,24 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/confusion/static/media/fontawesome-webfont.fee66e71.woff"
   },
   {
-    "revision": "eb267f35256591eb7733b73c0455dbfe",
-    "url": "/confusion/static/media/logo.eb267f35.png"
+    "revision": "39529cb108b3ecc81ceba4e9db091052",
+    "url": "/confusion/static/media/frank.39529cb1.jpg"
   },
   {
-    "revision": "5a3c8b7b8f243490c456d35f1c65e16e",
-    "url": "/confusion/static/media/maxresdefault.5a3c8b7b.jpg"
+    "revision": "ba2e085bb90629753e12a9e670bca3a7",
+    "url": "/confusion/static/media/logo.ba2e085b.png"
   },
   {
     "revision": "6448682a1e08e3f885bb739d2ae15d90",
     "url": "/confusion/static/media/peru.6448682a.mp4"
+  },
+  {
+    "revision": "31be1e168648a0f974eb89a538b45860",
+    "url": "/confusion/static/media/polloalabrasa.31be1e16.jpg"
+  },
+  {
+    "revision": "176c8f5287a681c48e8fcc84e1f1e745",
+    "url": "/confusion/static/media/rocoto_relleno.176c8f52.jpg"
   },
   {
     "revision": "c8fcf9ae1311406be5a7d9439b5deea5",

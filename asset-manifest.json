@@ -1,27 +1,30 @@
 {
   "files": {
-    "main.css": "/confusion/static/css/main.3039ffa8.chunk.css",
-    "main.js": "/confusion/static/js/main.19763b45.chunk.js",
-    "main.js.map": "/confusion/static/js/main.19763b45.chunk.js.map",
+    "main.css": "/confusion/static/css/main.f1f50700.chunk.css",
+    "main.js": "/confusion/static/js/main.a95d7e05.chunk.js",
+    "main.js.map": "/confusion/static/js/main.a95d7e05.chunk.js.map",
     "runtime-main.js": "/confusion/static/js/runtime-main.dfde7455.js",
     "runtime-main.js.map": "/confusion/static/js/runtime-main.dfde7455.js.map",
     "static/css/2.fd308fc8.chunk.css": "/confusion/static/css/2.fd308fc8.chunk.css",
-    "static/js/2.91c47719.chunk.js": "/confusion/static/js/2.91c47719.chunk.js",
-    "static/js/2.91c47719.chunk.js.map": "/confusion/static/js/2.91c47719.chunk.js.map",
+    "static/js/2.133bd977.chunk.js": "/confusion/static/js/2.133bd977.chunk.js",
+    "static/js/2.133bd977.chunk.js.map": "/confusion/static/js/2.133bd977.chunk.js.map",
     "index.html": "/confusion/index.html",
-    "precache-manifest.e75d17dff3da5d1738a8f05b432b94a4.js": "/confusion/precache-manifest.e75d17dff3da5d1738a8f05b432b94a4.js",
+    "precache-manifest.e47a091f225272710cdd343cc5949bb2.js": "/confusion/precache-manifest.e47a091f225272710cdd343cc5949bb2.js",
     "service-worker.js": "/confusion/service-worker.js",
     "static/css/2.fd308fc8.chunk.css.map": "/confusion/static/css/2.fd308fc8.chunk.css.map",
-    "static/css/main.3039ffa8.chunk.css.map": "/confusion/static/css/main.3039ffa8.chunk.css.map",
-    "static/js/2.91c47719.chunk.js.LICENSE.txt": "/confusion/static/js/2.91c47719.chunk.js.LICENSE.txt",
+    "static/css/main.f1f50700.chunk.css.map": "/confusion/static/css/main.f1f50700.chunk.css.map",
+    "static/js/2.133bd977.chunk.js.LICENSE.txt": "/confusion/static/js/2.133bd977.chunk.js.LICENSE.txt",
+    "static/media/adobo-aqp.jpg": "/confusion/static/media/adobo-aqp.418b5801.jpg",
     "static/media/alberto.png": "/confusion/static/media/alberto.681a3525.png",
-    "static/media/alberto2.png": "/confusion/static/media/alberto2.ea8ecac0.png",
     "static/media/buffet.png": "/confusion/static/media/buffet.96d6bd20.png",
+    "static/media/ceviche.jpg": "/confusion/static/media/ceviche.0ed90a8e.jpg",
     "static/media/elaicheesecake.png": "/confusion/static/media/elaicheesecake.a1c19f6d.png",
     "static/media/font-awesome.min.css": "/confusion/static/media/fontawesome-webfont.fee66e71.woff",
-    "static/media/logo.png": "/confusion/static/media/logo.eb267f35.png",
-    "static/media/maxresdefault.jpg": "/confusion/static/media/maxresdefault.5a3c8b7b.jpg",
+    "static/media/frank.jpg": "/confusion/static/media/frank.39529cb1.jpg",
+    "static/media/logo.png": "/confusion/static/media/logo.ba2e085b.png",
     "static/media/peru.mp4": "/confusion/static/media/peru.6448682a.mp4",
+    "static/media/polloalabrasa.jpg": "/confusion/static/media/polloalabrasa.31be1e16.jpg",
+    "static/media/rocoto_relleno.jpg": "/confusion/static/media/rocoto_relleno.176c8f52.jpg",
     "static/media/uthappizza.png": "/confusion/static/media/uthappizza.c8fcf9ae.png",
     "static/media/vadonut.png": "/confusion/static/media/vadonut.986a2644.png",
     "static/media/zucchipakoda.png": "/confusion/static/media/zucchipakoda.e54b2833.png"
@@ -29,8 +32,8 @@
   "entrypoints": [
     "static/js/runtime-main.dfde7455.js",
     "static/css/2.fd308fc8.chunk.css",
-    "static/js/2.91c47719.chunk.js",
-    "static/css/main.3039ffa8.chunk.css",
-    "static/js/main.19763b45.chunk.js"
+    "static/js/2.133bd977.chunk.js",
+    "static/css/main.f1f50700.chunk.css",
+    "static/js/main.a95d7e05.chunk.js"
   ]
 }
