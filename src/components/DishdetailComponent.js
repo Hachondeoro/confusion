@@ -19,7 +19,7 @@ function RenderDish({ dish }) {
                         exitTransform: 'scale(0.5) translateY(-50%)'
                     }}>
                     <Card>
-                        <CardImg width='100%' src={dish.image} alt={dish.name} />
+                        <CardImg width='100%' src={require(`.${dish.image}`)} alt={dish.name} />
                         <CardBody>
                             <CardTitle><p className='font-weight-bold text-uppercase'>
                                 {dish.category}</p> {dish.name}</CardTitle>
@@ -54,7 +54,7 @@ class CommentForm extends Component {
     }
 
     handleSubmit(values) {
-        this.props.postComment(this.props.dishId, values.rating, values.author, values.comment);
+        this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
     }
 
 
@@ -137,7 +137,7 @@ class CommentForm extends Component {
     }
 }
 
-function RenderComments({ dish, postComment, dishId }) {
+function RenderComments({ dish, addComment, dishId }) {
     if (dish != null) {
         const comments = dish.map(comment => {
             return (
@@ -163,7 +163,7 @@ function RenderComments({ dish, postComment, dishId }) {
                         {comments}
                     </Stagger>
                 </ul>
-                <CommentForm dishId={dishId} postComment={postComment} />
+                <CommentForm dishId={dishId} addComment={addComment} />
             </div>
         )
     } else return (<div></div>)
@@ -207,7 +207,7 @@ const DishDetail = (props) => {
                 <div className='row'>
                     <RenderDish dish={props.dish} />
                     <RenderComments dish={props.comments}
-                        postComment={props.postComment}
+                        addComment={props.addComment}
                         dishId={props.dish.id} />
 
                 </div>

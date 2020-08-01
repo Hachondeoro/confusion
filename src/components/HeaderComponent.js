@@ -45,7 +45,7 @@ class Header extends Component {
                     <div className='container'>
                         <NavbarToggler onClick={this.toggleNav} />
                         <NavbarBrand className='mr-auto' href='/'>
-                            <img src={require('./assets/images/logo.png')} height='30' width='41' alt='Ristorante Con Fusion'></img>
+                            <img src={require('./assets/images/logo.png')} height='50' width='50' alt="Frank's website"></img>
                         </NavbarBrand>
                         <Collapse isOpen={this.state.isNavOpen} navbar>
                             <Nav navbar>
@@ -56,7 +56,7 @@ class Header extends Component {
                                 </NavItem>
                                 <NavItem>
                                     <NavLink className='nav-link' to='/aboutus'>
-                                        <span className='fa fa-info fa-lg'></span> About us
+                                        <span className='fa fa-info fa-lg'></span> About Peruvian Cuisine
                                 </NavLink>
                                 </NavItem>
                                 <NavItem>
@@ -84,8 +84,8 @@ class Header extends Component {
                     <div className='container'>
                         <div className='row row-header'>
                             <div className='col-12 col-sm-6'>
-                                <h1>Ristorante Con Fusion</h1>
-                                <p>We take inspiration from you</p>
+                                <h1>The best of Peruvian food</h1>
+                                <p>Just come to Peru already</p>
                             </div>
                         </div>
                     </div>
