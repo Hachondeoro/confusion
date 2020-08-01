@@ -85,7 +85,7 @@ class Header extends Component {
                         <div className='row row-header'>
                             <div className='col-12 col-sm-6'>
                                 <h1>The best of Peruvian food</h1>
-                                <p>Just come to Peru already</p>
+                                <p>Just come to Peru already!</p>
                             </div>
                         </div>
                     </div>
